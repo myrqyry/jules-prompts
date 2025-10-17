@@ -2,7 +2,9 @@
 
 **The most comprehensive, up-to-date collection of prompts for Jules - Google's asynchronous AI coding agent.**
 
-[![Jules](https://img.shields.io/badge/Jules-Google%20Labs-4285f![API](https://img.shields.io/badge/Jules%20API-Available-00c851?style=flathttps://developers.google.com/.shields.io/badge/Jules%20Toolshttps://img.shields.io/badge/Updated-Oct%202025-brightgreen?https://jules.google/docs🚀 Latest Update (October 2025)**: This collection has been completely revamped to leverage Jules' newest capabilities including the **Jules API**, **CLI Tools**, **Memory System**, **File Selector**, **Visual Feedback**, and **Critique Agent**.
+<p align="center">
+  <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
+</p>https://jules.google/docs🚀 Latest Update (October 2025)**: This collection has been completely revamped to leverage Jules' newest capabilities including the **Jules API**, **CLI Tools**, **Memory System**, **File Selector**, **Visual Feedback**, and **Critique Agent**.
 
 ## 🎯 What's New in This Enhanced Edition
 
