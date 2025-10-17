@@ -1,5 +1,3 @@
-Based on the latest information about Jules' capabilities and your existing repository, here's a comprehensive new README for your jules-prompts fork:
-
 # 🌟 Awesome Jules Prompts (2025 Enhanced Edition)
 
 **The most comprehensive, up-to-date collection of prompts for Jules - Google's asynchronous AI coding agent.**
