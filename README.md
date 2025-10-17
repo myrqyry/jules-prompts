@@ -4,403 +4,393 @@
 
 <p align="center">
   <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
-</p>https://jules.google/docs🚀 Latest Update (October 2025)**: This collection has been completely revamped to leverage Jules' newest capabilities including the **Jules API**, **CLI Tools**, **Memory System**, **File Selector**, **Visual Feedback**, and **Critique Agent**.
+<br>
+  **🚀 Latest Update (October 2025)**: This collection covers **all Jules interfaces** - the powerful web UI, new CLI Tools, and API integration. Choose your preferred workflow: browser-based for visual feedback, terminal for seamless integration, or API for automation.
 
 ## 🎯 What's New in This Enhanced Edition
 
-This isn't just another prompt collection - it's a **comprehensive guide to modern AI-assisted development** with Jules. Unlike the original awesome-list, these prompts are designed for:
+This collection provides prompts for **every way** you can use Jules:
 
-- **Jules API Integration** - Automate workflows with programmatic access
-- **Jules Tools CLI** - Terminal-native development workflows  
-- **Memory & Context** - Persistent preferences across sessions
-- **Visual Development** - UI testing with screenshot feedback
-- **Modern Architecture** - 2025 best practices and patterns
+- **🌐 Web Interface** - Rich visual feedback, planning collaboration, GitHub integration
+- **⚡ CLI Tools** - Terminal-native workflows and automation
+- **🤖 API Integration** - Programmatic access for custom workflows  
+- **🔄 Hybrid Workflows** - Combine interfaces for maximum flexibility
 
-## 🛠️ Quick Start
+## 🛠️ Quick Start Guide
 
-### Prerequisites
-```bash
-# Install Jules Tools CLI
-npm install -g @google/jules
-
-# Authenticate (get API key from jules.google/settings)
-jules auth login
+### Web Interface (Browser-based)
+```
+1. Visit https://jules.google
+2. Connect your GitHub account
+3. Select repository and branch
+4. Chat with Jules using natural language prompts
 ```
 
-### Your First Enhanced Prompt
+### CLI Tools (Terminal-based)  
 ```bash
-# Modern project setup with all latest features
-jules start "Initialize a new TypeScript React project with Tailwind CSS following 2025 best practices. Research current standards online, set up proper tooling, create environment snapshots, and document any custom agents in AGENTS.md."
+# Install and authenticate
+npm install -g @google/jules
+jules login
+
+# Launch interactive TUI or create remote sessions
+jules  # Interactive terminal UI
+jules remote new --repo . --session "your task here"
+```
+
+### API Integration (Programmatic)
+```bash
+# Direct API calls for automation
+curl -X POST https://jules.googleapis.com/v1/sessions \
+  -H "Authorization: Bearer $JULES_API_KEY" \
+  -d '{"repo": "owner/repo", "prompt": "your task"}'
 ```
 
 ## 📚 Table of Contents
 
-- [🧠 AI-Native Development](#-ai-native-development) - *New Section*
-- [⚡ Interactive Workflows](#-interactive-workflows) - *New Section*  
-- [🛠️ Enhanced Dev Tasks](#️-enhanced-dev-tasks) - *Improved*
-- [🤖 API & Automation](#-api--automation) - *New Section*
-- [🎨 Visual Development](#-visual-development) - *New Section*
-- [🔧 Modern Architecture](#-modern-architecture) - *New Section*
-- [📊 Quality Assurance](#-quality-assurance) - *Enhanced*
-- [🚀 Advanced Features](#-advanced-features) - *Updated*
-- [🎉 Creative & Experimental](#-creative--experimental) - *Expanded*
+- [🌐 Web Interface Prompts](#-web-interface-prompts) - *Rich, Interactive Development*
+- [⚡ CLI & Terminal Prompts](#-cli--terminal-prompts) - *Command-Line Workflows*  
+- [🛠️ Universal Prompts](#️-universal-prompts) - *Work in Any Interface*
+- [🤖 API & Automation](#-api--automation) - *Programmatic Integration*
+- [🎨 Visual Development](#-visual-development) - *UI-Focused Tasks*
+- [🔧 Advanced Workflows](#-advanced-workflows) - *Multi-Interface Projects*
 
 ***
 
-## 🧠 AI-Native Development
+## 🌐 Web Interface Prompts
 
-*Leverage Jules' intelligence and memory for smarter development*
+*Perfect for interactive development, visual feedback, and collaborative planning*
 
-### Context & Memory Management
+### Interactive Planning & Collaboration
+```
+I want to add a user authentication system with social login support. Please analyze my current codebase, ask clarifying questions about my preferred approach, and collaborate with me to create the optimal implementation plan before starting.
+```
+*Uses Jules' interactive planning mode for complex features*
+
+### Visual UI Development
+```
+Create a responsive dashboard component with data visualization charts. I need to see visual feedback of how it looks across different screen sizes, and I want you to show me screenshots of the rendered components during development.
+```
+*Leverages Jules' visual feedback capabilities in the web UI*
+
+### Codebase Analysis & Architecture Review
+```
+Perform a comprehensive analysis of my entire codebase architecture. Create detailed documentation explaining the current structure, identify any architectural issues, and recommend improvements. Present this as an interactive report I can discuss with you.
+```
+*Uses the web interface's rich feedback and discussion capabilities*
+
+### Real-time Code Review
+```
+I'm working on this pull request [link or description]. Please review the changes in real-time as I make them, provide instant feedback on code quality, security issues, and suggest improvements. Let's collaborate interactively to refine the implementation.
+```
+*Interactive review process using web interface*
+
+### Research-Driven Development
+```
+Research the latest trends in React Server Components and Next.js App Router (search online for 2025 best practices). Based on your findings, help me migrate my existing Pages Router application. Show me examples and let's plan this migration step by step.
+```
+*Uses Jules' web browsing capability with interactive planning*
+
+---
+
+## ⚡ CLI & Terminal Prompts
+
+*Seamless terminal integration for workflow automation*
+
+### Quick Task Creation
 ```bash
-# Establish your coding preferences and patterns
-jules start "Analyze my codebase patterns and coding style, then remember these preferences for all future tasks. Create an AGENTS.md file documenting any custom workflows or tools specific to this project."
+# Single command task creation
+jules remote new --repo . --session "add comprehensive test coverage with Jest and Playwright, including visual regression tests"
+
+# Batch processing from files
+cat backlog.md | while IFS= read -r line; do
+  jules remote new --repo . --session "$line"
+done
 ```
 
-### Research-Driven Development  
+### GitHub Integration Workflows
 ```bash
-# Stay current with latest practices
-jules start "Research the latest {framework/library} updates online, compare with my current implementation, and propose a migration plan with step-by-step tasks."
+# Work on assigned issues automatically
+gh issue list --assignee @me --limit 1 --json title \
+| jq -r '.[0].title' \
+| jules remote new --repo .
+
+# AI-powered issue prioritization
+gemini -p "analyze these issues and pick the most critical one\n$(gh issue list)" \
+| jules remote new --repo .
 ```
 
-### Intelligent Planning
+### Repository Management
 ```bash
-# Collaborative feature planning
-jules start "I want to add {feature description}. Please read my codebase, ask clarification questions about implementation details, and collaborate with me to create the optimal plan before starting."
+# Multi-repo maintenance
+for repo in $(gh repo list --json name --jq '.[].name'); do
+  jules remote new --repo $repo --session "update dependencies and create security audit report"
+done
+
+# Cross-repository analysis
+jules remote new --repo torvalds/linux --session "analyze memory management patterns in recent commits for educational blog post"
 ```
 
-### Code Analysis & Insights
+### Automated Monitoring & Maintenance
 ```bash
-# AI-powered technical debt analysis
-jules start "Audit my entire codebase for technical debt. Prioritize issues by impact and create a remediation plan with individual tasks that can be executed over time."
+# Daily automated tasks (add to crontab)
+# 0 9 * * * jules remote new --repo . --session "run security audit and create PR for fixes"
+# 0 17 * * * jules remote new --repo . --session "update documentation for any code changes today"
+
+# CI/CD integration
+jules remote new --repo . --session "analyze failing tests in CI and create fixes with proper error handling"
 ```
 
 ***
 
-## ⚡ Interactive Workflows
+## 🛠️ Universal Prompts
 
-*Use Jules' interactive capabilities for better collaboration*
+*These work great in both web interface and CLI*
 
-### Critique-Driven Development
-```bash
-# Get AI code review before implementation
-jules start "Review this code change proposal: {description}. Use your Critique Agent to identify potential issues, security concerns, and suggest improvements before implementation."
+### Modern Development Tasks
+
+#### Smart Refactoring
+```
+Refactor the user authentication system from session-based to JWT with refresh tokens. Research current security best practices for 2025, implement proper token management, update all related middleware, and ensure backward compatibility during migration.
 ```
 
-### Multi-Session Coordination
-```bash  
-# Break down complex features
-jules start "Help me break down this complex feature: {description}. Create sub-tasks that can be handled by multiple Jules sessions, and coordinate the integration plan."
+#### Performance Optimization
+```
+Analyze the application's performance bottlenecks using modern profiling techniques. Focus on Core Web Vitals, implement lazy loading, optimize bundle size, and create comprehensive performance monitoring. Provide before/after benchmarks.
 ```
 
-### Environment Snapshots
-```bash
-# Reproducible development environments
-jules start "Set up a complete development environment for {project type}. Create environment snapshots for quick future setup, and document the agent workflows in AGENTS.md."
+#### Security Enhancement
+```
+Perform a comprehensive security audit of the entire codebase. Check for common vulnerabilities, update dependencies, implement proper input validation, add rate limiting, and create security monitoring. Document all security measures implemented.
 ```
 
-***
-
-## 🛠️ Enhanced Dev Tasks
-
-*Modern versions of everyday development tasks*
-
-### Smart Refactoring
-```bash
-# Context-aware refactoring with file selector
-jules start "Refactor {specific file} from {x} to {y}, using the file selector to focus context on related files in {directory}. Remember my preference for {coding style/pattern} for future similar tasks."
+#### Testing Strategy Implementation
+```
+Design and implement a modern testing strategy including unit tests (Vitest), integration tests (Playwright), visual regression testing, and performance testing. Set up automated test pipelines with proper coverage reporting and failure notifications.
 ```
 
-### Intelligent Testing
-```bash
-# Comprehensive testing with memory integration
-jules start "Add comprehensive test coverage for {feature-name}. Use my remembered testing preferences and create tests that integrate with the existing test environment snapshot."
+### Advanced Architecture Tasks
+
+#### Microservices Migration
+```
+Analyze the current monolithic architecture and create a migration plan to microservices. Design service boundaries, implement proper API gateways, set up inter-service communication, and create deployment strategies with monitoring and logging.
 ```
 
-### Modern Migration
-```bash
-# Research-driven technology updates
-jules start "Convert this legacy {language/framework} codebase to modern {target}. Research current best practices online and apply them consistently across all relevant files."
+#### Cloud-Native Implementation
+```
+Convert the application to cloud-native architecture using containers, Kubernetes, and proper DevOps practices. Implement auto-scaling, health checks, monitoring dashboards, and disaster recovery procedures.
 ```
 
-### Type Safety Enhancement
-```bash
-# AI-reviewed type improvements
-jules start "Implement type safety improvements across the codebase. Focus on {specific modules} using file selector, and let the Critique Agent review for consistency and completeness."
+#### AI/ML Integration
 ```
-
-***
-
-## 🤖 API & Automation
-
-*Integrate Jules into your workflows programmatically*
-
-### ChatOps Integration
-```bash
-# Slack-integrated development
-jules start "Integrate Jules with my Slack workspace using the API. Create a bot that can trigger coding tasks from Slack messages and report completion status."
-```
-
-### CI/CD Automation
-```bash
-# Automated issue resolution
-jules start "Create a CI/CD pipeline that uses Jules API to automatically fix failing tests and create PRs with the fixes. Include proper error handling and notification workflows."
-```
-
-### Development Dashboard
-```bash
-# Intelligent monitoring and maintenance
-jules start "Build a development dashboard that monitors my repos and uses Jules API to automatically address common issues like dependency updates, security patches, and code quality improvements."
-```
-
-### Webhook Integration
-```bash
-# Event-driven development
-jules start "Create a feature that integrates with the Jules API to automatically trigger code reviews when PRs are created. Document the webhook setup in AGENTS.md."
+Research and implement machine learning capabilities for [specific use case]. Create data preprocessing pipelines, implement model inference endpoints, add proper monitoring and versioning, and integrate with the existing application architecture.
 ```
 
 ***
 
 ## 🎨 Visual Development
 
-*Leverage Jules' visual feedback capabilities for UI development*
+*Optimized for Jules' web interface visual capabilities*
 
-### Visual Testing
-```bash
-# Screenshot-based UI testing
-jules start "Build a {web feature} with visual testing. Create Playwright tests that capture screenshots, and show me the visual feedback directly in the Jules interface."
+### UI Component Development
+```
+Create a comprehensive design system with reusable React components. I want to see visual previews of each component in different states, color schemes, and sizes. Build Storybook stories with interactive controls and automated visual regression testing.
 ```
 
-### Responsive Design
-```bash
-# Multi-viewport testing with visual feedback
-jules start "Implement responsive design for {component/page}. Test across different viewport sizes and show visual comparisons of the rendered results."
+### Responsive Design Implementation  
+```
+Implement responsive design for the entire application using modern CSS Grid and Container Queries. Show me visual comparisons across mobile, tablet, and desktop viewports. Create automated visual testing to prevent regression.
 ```
 
-### Modern Web Applications
-```bash
-# Research + visual development
-jules start "Create a modern web application using {framework}. Research current best practices online, implement with proper testing, and create visual documentation of the UI components."
+### Interactive Prototyping
+```
+Build interactive prototypes for the new user onboarding flow. Create multiple variations with different UX approaches, show visual mockups of each step, and implement user testing capabilities to gather feedback on the flow.
 ```
 
-### Design System Creation
-```bash
-# Visual component library
-jules start "Build a comprehensive design system with visual component documentation. Create Storybook stories with visual regression testing using Playwright integration."
+### Accessibility Implementation
+```
+Audit and improve accessibility across the entire application. Show visual indicators of accessibility issues, implement proper ARIA labels, ensure keyboard navigation, and create visual accessibility testing reports with before/after comparisons.
 ```
 
 ***
 
-## 🔧 Modern Architecture
+## 🤖 API & Automation
 
-*Build with 2025 best practices and current technologies*
+*Advanced integration patterns using Jules API*
 
-### Contemporary Project Scaffolding
-```bash
-# Research-driven project setup
-jules start "Initialize a new {project type} following 2025 best practices. Research current standards online, set up proper tooling, create environment snapshots, and document any custom agents in AGENTS.md."
+### ChatOps Integration
+```javascript
+// Slack bot integration example
+const { JulesAPI } = require('@google/jules-api');
+
+app.post('/slack/commands', async (req, res) => {
+  const task = req.body.text;
+  const session = await jules.createSession({
+    repo: process.env.DEFAULT_REPO,
+    prompt: `${task} - requested via Slack by ${req.body.user_name}`,
+    notify_webhook: process.env.SLACK_WEBHOOK
+  });
+  res.json({ text: `Task started: ${session.id}` });
+});
 ```
 
-### Runtime Migration
-```bash
-# Modern runtime adoption
-jules start "Migrate my project to use Bun instead of Node.js. Update all configurations, test compatibility, and create new environment snapshots for the updated stack."
+### CI/CD Pipeline Integration
+```yaml
+# GitHub Actions workflow
+- name: Auto-fix failing tests
+  run: |
+    if [ "${{ job.status }}" == "failure" ]; then
+      jules remote new --repo . --session "analyze failing tests and implement fixes with proper error handling and documentation"
+    fi
 ```
 
-### Microservices Architecture
+### Automated Code Review
 ```bash
-# Advanced system design with automation
-jules start "Create a multi-service architecture with proper containerization, API design, and monitoring. Include Jules API integration for automated maintenance tasks."
+# Webhook handler for PR reviews
+jules remote new --repo $REPO --session "Review PR #$PR_NUMBER for security vulnerabilities, performance issues, and code quality. Create detailed feedback with specific line-by-line suggestions and security recommendations."
 ```
 
-### Cloud-Native Development
-```bash
-# Modern deployment patterns
-jules start "Implement cloud-native architecture with Kubernetes, service mesh, and observability. Research current cloud patterns and create automated deployment pipelines."
-```
+### Development Dashboard Integration
+```python
+# Python automation example
+import requests
 
-***
-
-## 📊 Quality Assurance
-
-*Comprehensive quality management with AI assistance*
-
-### Performance Optimization
-```bash
-# Research-driven performance improvements
-jules start "Analyze my application's performance bottlenecks using modern profiling techniques. Research current optimization strategies online and implement improvements with proper benchmarking."
-```
-
-### Bundle Analysis
-```bash
-# Modern optimization with visual reporting
-jules start "Optimize my bundle size and load times. Research current best practices for {framework}, implement code splitting, and create visual reports of the improvements."
-```
-
-### Security Auditing
-```bash
-# Current threat assessment
-jules start "Audit my codebase for security vulnerabilities. Research current threat vectors online, implement proper security measures, and create ongoing security monitoring with Jules API."
-```
-
-### Comprehensive Code Review
-```bash
-# AI-enhanced review process
-jules start "Perform a comprehensive code review of {module/feature}. Use your Critique Agent to analyze for security, performance, maintainability, and adherence to best practices. Research current standards online."
+def monitor_repos():
+    for repo in get_monitored_repos():
+        response = requests.post('https://jules.googleapis.com/v1/sessions', {
+            'repo': repo,
+            'prompt': 'Check for security updates, dependency vulnerabilities, and code quality issues. Create PRs for any fixes needed.',
+            'headers': {'Authorization': f'Bearer {JULES_API_KEY}'}
+        })
 ```
 
 ***
 
-## 🚀 Advanced Features
+## 🔧 Advanced Workflows
 
-*Cutting-edge development patterns and integrations*
+*Complex projects using multiple Jules interfaces*
 
-### AI-Enhanced Features
+### Multi-Interface Development Workflow
 ```bash
-# ML integration patterns
-jules start "Build a feature that leverages machine learning for {use case}. Research current ML integration patterns, implement proper model management, and create monitoring dashboards."
+# 1. Start with CLI for quick setup
+jules remote new --repo . --session "set up modern TypeScript React project with Vite, ESLint, Prettier, and testing framework"
+
+# 2. Switch to web interface for interactive planning
+# Visit jules.google, continue the session for collaborative UI design
+
+# 3. Use API for automated testing
+curl -X POST https://jules.googleapis.com/v1/sessions \
+  -H "Authorization: Bearer $API_KEY" \
+  -d '{"repo": ".", "prompt": "run comprehensive test suite and create performance benchmarks"}'
 ```
 
-### Real-time Systems
-```bash
-# Modern real-time architecture
-jules start "Implement real-time collaboration features using modern WebSocket patterns and Redis. Research current real-time architecture best practices and implement with proper scaling."
+### Hybrid Debugging Session  
+```
+# CLI: Quick issue identification
+jules remote new --repo . --session "analyze error logs and identify root cause of performance degradation"
+
+# Web: Interactive problem-solving with visual feedback
+# Continue in browser for step-by-step debugging with visual outputs
+
+# API: Automated fix deployment  
+# Use API to deploy fixes across environments
 ```
 
-### API-First Development
+### Cross-Repository Architecture Project
 ```bash
-# Modern API design
-jules start "Design and implement a comprehensive API following 2025 REST/GraphQL best practices. Include proper documentation, testing, and monitoring with OpenTelemetry."
-```
+# Use CLI for bulk repository analysis
+for service in auth payments notifications; do
+  jules remote new --repo $ORG/$service --session "analyze current architecture and document API endpoints, dependencies, and performance characteristics"
+done
 
-### Progressive Web Apps
-```bash
-# Modern PWA implementation
-jules start "Convert my application to a Progressive Web App with offline capabilities, push notifications, and app-like experience. Research current PWA patterns and implement with proper testing."
-```
+# Use web interface for interactive architecture planning
+# Design overall system architecture with visual feedback
 
-***
-
-## 🎉 Creative & Experimental
-
-*Fun and innovative uses of Jules' capabilities*
-
-### Generative Development
-```bash
-# AI-generated project ideas
-jules start "Analyze my development patterns and interests, then generate 3 innovative project ideas that would showcase cutting-edge technologies. Create detailed implementation plans for each."
-```
-
-### Code Art & Visualization
-```bash
-# Creative code visualization
-jules start "Create a generative art piece that visualizes my codebase metrics over time. Use modern web graphics technologies and create an interactive dashboard."
-```
-
-### Development Games
-```bash
-# Gamified development
-jules start "Build a code-based puzzle game that teaches programming concepts. Include multiple difficulty levels, progress tracking, and social features."
-```
-
-### Experimental UI Patterns
-```bash
-# Innovative interface design
-jules start "Research and implement experimental UI patterns from 2025. Create a demo showcasing innovative interaction designs with proper accessibility support."
+# Use API for automated implementation across services
+# Deploy coordinated changes using API integration
 ```
 
 ***
 
-## 🔧 CLI & Automation Examples
+## 📖 Interface-Specific Usage Tips
 
-### Jules Tools Integration
-```bash
-# Monitor and automate with CLI
-jules status --watch
-jules start --file package.json "Update all dependencies to latest stable versions"
-jules memory set "preferred-testing-framework" "vitest"
-```
+### 🌐 Web Interface Best Practices
+- **Visual Tasks**: Use for UI development, design systems, and visual testing
+- **Interactive Planning**: Leverage collaborative planning for complex features  
+- **Real-time Feedback**: Great for iterative development and debugging
+- **Repository Selection**: Easy visual repository and branch selection
 
-### Scripting Examples
-```bash
-#!/bin/bash
-# Automated PR workflow
-jules start "Review PR #$1 for security issues and performance concerns" 
-jules wait
-jules start "Create automated tests for the changes in PR #$1"
-```
+### ⚡ CLI Best Practices  
+- **Automation**: Perfect for scripted workflows and CI/CD integration
+- **Bulk Operations**: Efficient for processing multiple tasks or repositories
+- **Terminal Integration**: Seamless with existing terminal-based workflows
+- **Quick Tasks**: Fast task creation without leaving the terminal
 
-***
-
-## 📖 How to Use This Collection
-
-### 1. **Copy & Customize**
-Replace `{placeholders}` with your specific requirements:
-```bash
-# Template
-jules start "Refactor {specific file} from {x} to {y}..."
-
-# Usage  
-jules start "Refactor user-auth.js from callbacks to async/await..."
-```
-
-### 2. **Leverage Context**
-Use file selector and memory for better results:
-```bash
-jules start --files src/components/Header.tsx,src/styles/header.css "Redesign header component with modern CSS Grid layout"
-```
-
-### 3. **Chain Operations**
-Combine prompts for complex workflows:
-```bash
-jules start "Research current React 19 patterns" && \
-jules wait && \
-jules start "Apply learned patterns to migrate my components"
-```
+### 🤖 API Best Practices
+- **Custom Integration**: Build Jules into your existing tools and platforms
+- **Automated Workflows**: Create event-driven development processes
+- **Monitoring**: Implement continuous code quality and security monitoring
+- **Scaling**: Handle large-scale or enterprise development workflows
 
 ***
 
-## 🤝 Contributing
+## 🔄 Choosing Your Interface
 
-Help make this the definitive Jules prompt collection! 
-
-### What We're Looking For:
-- **API Integration Examples** - Real-world Jules API usage
-- **CLI Workflow Patterns** - Terminal-based development flows  
-- **Visual Development Prompts** - UI/UX focused tasks
-- **Modern Architecture Examples** - 2025 best practices
-- **Industry-Specific Prompts** - Gaming, fintech, healthcare, etc.
-
-### Contribution Guidelines:
-1. **Test Your Prompts** - Ensure they work with current Jules version
-2. **Include Context** - Explain when/why to use each prompt
-3. **Modern Focus** - Prioritize current technologies and patterns
-4. **API Integration** - Show how to leverage Jules API when relevant
-
-[**Open a Pull Request**](https://github.com/myrqyry/jules-prompts/pulls) | [**Suggest Ideas**](https://github.com/myrqyry/jules-prompts/issues)
+| Use Case | Best Interface | Why |
+|----------|---------------|-----|
+| Visual UI Development | Web Interface | Screenshot feedback, interactive design |
+| Quick Bug Fixes | CLI Tools | Fast terminal integration |
+| Automated Monitoring | API | Event-driven, programmatic access |
+| Complex Feature Planning | Web Interface | Interactive collaboration |
+| Bulk Repository Updates | CLI Tools | Efficient scripting |
+| Custom Tool Integration | API | Maximum flexibility |
+| Learning/Exploration | Web Interface | Rich feedback and guidance |
 
 ***
 
-## 📄 Links & Resources
+## 📄 Resources & Links
 
-- **[Jules Documentation](https://jules.google/docs)** - Official guides and tutorials[1]
-- **[Jules API Reference](https://developers.google.com/jules/api)** - Complete API documentation[2]
-- **[Jules Tools CLI](https://jules.google/docs/cli)** - Command-line interface guide[3]
-- **[Changelog](https://jules.google/docs/changelog/)** - Latest updates and features[4]
-- **[Google Blog](https://blog.google/technology/google-labs/jules-tools-jules-api/)** - Official announcements[1]
+### Official Jules Resources
+- **[Jules Web Interface](https://jules.google)** - Browser-based development[1]
+- **[Jules CLI Documentation](https://jules.google/docs/cli)** - Terminal integration guide[2]
+- **[Jules API Reference](https://developers.google.com/jules/api)** - Programmatic access[3]
+- **[Jules Changelog](https://jules.google/docs/changelog/)** - Latest features and updates[4]
+
+### Installation & Setup
+- **[CLI Installation](https://www.npmjs.com/package/@google/jules)** - `npm install -g @google/jules`[5]
+- **[CLI Examples](https://jules.google/docs/cli/examples)** - Practical usage patterns[6]
+- **[API Documentation](https://developers.google.com/jules/api)** - Integration examples[3]
 
 ***
 
 ## ⚡ Quick Reference
 
-| Feature | Syntax | Purpose |
-|---------|---------|----------|
-| File Selector | `--files path1,path2` | Focus context on specific files |
-| Memory | `jules memory set key value` | Remember preferences |
-| Environment | `--env-snapshot name` | Use saved environment |
-| API Integration | `curl -H "X-Goog-Api-Key: ..."` | Programmatic access |
-| Interactive Mode | `jules start --interactive` | Collaborative planning |
+### Web Interface
+| Action | Method | Purpose |
+|--------|--------|---------|
+| Start Session | Visit jules.google | Rich interactive development |
+| Visual Feedback | Enable screenshots | UI development and testing |
+| Collaborate | Interactive chat | Complex feature planning |
+| Repository | GUI selection | Easy project management |
+
+### CLI Tools  
+| Action | Command | Purpose |
+|--------|---------|---------|
+| Install | `npm install -g @google/jules` | Get CLI tools |
+| Login | `jules login` | Authenticate |
+| Interactive | `jules` | Terminal UI |
+| Quick Task | `jules remote new --repo . --session "task"` | Fast execution |
+| Monitor | `jules remote list --session` | Track progress |
+
+### API Integration
+| Action | Method | Purpose |
+|--------|--------|---------|
+| Create Session | `POST /v1/sessions` | Programmatic tasks |
+| Monitor | `GET /v1/sessions/{id}` | Check status |
+| Results | `GET /v1/sessions/{id}/result` | Get output |
+| Webhooks | Configure endpoints | Event notifications |
 
 ***
 
-**Built with ❤️ for the Jules community** | **Updated October 2025** | **Compatible with Jules API & CLI Tools**
+**Built with ❤️ for the Jules community** | **Updated October 2025** | **All Interfaces Supported**
+
+*Choose your perfect Jules workflow: Visual web interface, seamless CLI integration, or powerful API automation.*
